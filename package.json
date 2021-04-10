@@ -1,0 +1,16 @@
+{
+  "name": "steamrobot-discord",
+  "version": "1.0.0",
+  "description": "SteamRobot Discord client",
+  "main": "src/app.js",
+  "repository": "https://github.com/HalloSouf/SteamRobot.git",
+  "author": "HalloSouf",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "dotenv": "^8.2.0"
+  },
+  "scripts": {
+    "dev": "nodemon src/app.js"
+  }
+}
