@@ -1,18 +1,17 @@
 /**
- * EventBase
+ * BaseEvent
  */
-class EventBase {
+class BaseEvent {
 
     /**
-     * Client instance
      * @param {Client} client
      */
     constructor(client) {
 
         /**
          * Client instance
-         * @private
          * @readonly
+         * @private
          */
         Object.defineProperty(this, 'client', { value: client });
 
@@ -20,4 +19,4 @@ class EventBase {
 
 }
 
-module.exports = { EventBase };
+module.exports = { BaseEvent };
