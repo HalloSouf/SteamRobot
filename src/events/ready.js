@@ -1,10 +1,10 @@
-const { BaseEvent } = require('../structures/BaseEvent');
+const { EventBase } = require('../structures/EventBase');
 
 /**
  * Ready event
- * @extends {BaseEvent}
+ * @extends {EventBase}
  */
-class Ready extends BaseEvent {
+class Ready extends EventBase {
 
     /**
      * @param {Client} client

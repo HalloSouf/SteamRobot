@@ -1,13 +1,20 @@
 const { resolve } = require('path');
 const { readdirSync } = require('fs');
-const { Client } = require('discord.js');
+const { Client, Collection } = require('discord.js');
 
 class SteamRobot extends Client {
 
     constructor() {
         super();
+
+        this.commands = new Collection();
+        this.aliases = new Collection();
     }
 
+    /**
+     * Get current directory
+     * @returns {string}
+     */
     get directory() {
         return resolve(`./src/`);
     }
@@ -26,6 +33,9 @@ class SteamRobot extends Client {
         }
     }
 
+    /**
+     * Load all events
+     */
     loadEvents() {
         readdirSync(`${this.directory}/events/`).forEach((file) => {
             const event = new (require(`${this.directory}/events/${file}`))(this);
@@ -34,8 +44,31 @@ class SteamRobot extends Client {
         console.log(`Client // Events are loaded!`);
     }
 
+    /**
+     * Load commands
+     */
+    loadCommands() {
+        readdirSync(`${this.directory}/commands/`).forEach((dirs) => {
+            const commands = readdirSync(`${this.directory}/commands/${dirs}/`).filter((file) => file.endsWith('.js'));
+            for (const file of commands) {
+                const command = new (require(`${this.directory}/commands/${dirs}/${file}`))(this);
+                if (command.props && typeof (command.props.name) === 'string' && typeof (command.props.category === 'string')) {
+                    if (this.commands.get(command.props.name)) return;
+                    this.commands.set(command.props.name, command);
+                } else {
+                    console.log(`Client // Error while loading command in commands/${dirs}`);
+                }
+            }
+        });
+        console.log(`Client // Commands are loaded!`);
+    }
+
+    /**
+     * Initialise blocks
+     */
     init () {
         this.loadEvents();
+        this.loadCommands();
     }
 
 }

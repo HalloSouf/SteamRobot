@@ -1,7 +1,7 @@
 /**
- * BaseEvent
+ * EventBase
  */
-class BaseEvent {
+class EventBase {
 
     /**
      * @param {Client} client
@@ -19,4 +19,4 @@ class BaseEvent {
 
 }
 
-module.exports = { BaseEvent };
+module.exports = { EventBase };
