@@ -1,3 +1,5 @@
+const { con } = require('../database/MySQLConnection');
+
 /**
  * CommandBase
  */
@@ -15,6 +17,13 @@ class CommandBase {
         aliases: [],
         permission: 'SEND_MESSAGES'
     }) {
+
+        /**
+         * MySQL Connection
+         * @readonly
+         * @private
+         */
+        Object.defineProperty(this, 'sql', { value: con.connection });
 
         /**
          * Client instance

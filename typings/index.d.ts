@@ -6,3 +6,11 @@ interface CommandProperties {
     aliases?: Array<string>;
     permission?: string;
 }
+
+interface MySQLConfig {
+    host: string;
+    user: string;
+    password?: string;
+    database: string;
+    port?: number;
+}
