@@ -27,6 +27,7 @@ class Ping extends CommandBase {
 
         await message.channel.send({
             embed: {
+                color: this.utility.colors.general,
                 fields: [
                     { name: '**Pong**', value: `Received a latency of **${this.client.ws.ping}ms**!` }
                 ],

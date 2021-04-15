@@ -1,3 +1,4 @@
+const { UtilityManager } = require('../managers/UtilityManager');
 const { con } = require('../database/MySQLConnection');
 
 /**
@@ -17,6 +18,12 @@ class CommandBase {
         aliases: [],
         permission: 'SEND_MESSAGES'
     }) {
+
+        /**
+         * UtilityManager
+         * @private
+         */
+        Object.defineProperty(this, 'utility', { value: new UtilityManager() });
 
         /**
          * MySQL Connection

@@ -14,3 +14,10 @@ interface MySQLConfig {
     database: string;
     port?: number;
 }
+
+interface ColorScheme {
+    general: string;
+    orange: string;
+    red: string;
+    green: string;
+}
