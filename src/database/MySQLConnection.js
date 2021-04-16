@@ -12,7 +12,7 @@ class MySQLConnection {
     _connection;
 
     /**
-     * @param {MySQLConfig} options
+     * @param {mysql.config} options
      */
     constructor(options) {
         this.options = options;

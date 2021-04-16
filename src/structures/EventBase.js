@@ -1,3 +1,4 @@
+const { SettingsManager } = require('../managers/SettingsManager');
 const { con } = require('../database/MySQLConnection');
 
 /**
@@ -9,6 +10,12 @@ class EventBase {
      * @param {Client} client
      */
     constructor(client) {
+
+        /**
+         * SettingsManager
+         * @readonly
+         */
+        Object.defineProperty(this, 'settings', { value: new SettingsManager() });
 
         /**
          * MySQL Connection

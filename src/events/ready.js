@@ -2,7 +2,7 @@ const { EventBase } = require('../structures/EventBase');
 
 /**
  * Ready event
- * @extends {EventBase}
+ * @extends EventBase
  */
 class Ready extends EventBase {
 

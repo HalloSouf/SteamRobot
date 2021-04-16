@@ -1,23 +1,38 @@
-interface CommandProperties {
-    name: string;
-    description: string;
-    category: string;
-    usage?: string;
-    aliases?: Array<string>;
-    permission?: string;
+declare namespace mysql {
+
+    interface config {
+        host: string;
+        user: string;
+        password?: string;
+        database: string;
+        port?: number;
+    }
+
+    interface settings {
+        id: number;
+        guild: string;
+        setting: string;
+        value:  string;
+        created_at: Date;
+        updated_at: Date;
+    }
+
 }
 
-interface MySQLConfig {
-    host: string;
-    user: string;
-    password?: string;
-    database: string;
-    port?: number;
-}
-
-interface ColorScheme {
+interface Colors {
     general: string;
     orange: string;
     red: string;
     green: string;
+}
+
+interface SettingsOptions {
+    guild: string;
+}
+
+interface Settings {
+    setting: string;
+    value: string;
+    created_at: Date;
+    updated_at: Date;
 }

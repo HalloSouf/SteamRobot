@@ -3,13 +3,13 @@ const colors = require('../config/colors.json');
 
 /**
  * UtilityManager
- * @extends {BaseManager}
+ * @extends BaseManager
  */
 class UtilityManager extends BaseManager {
 
     /**
      * Retrieve all colors
-     * @returns {ColorScheme}
+     * @returns {Colors}
      */
     get colors() {
         return colors;

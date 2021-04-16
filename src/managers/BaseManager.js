@@ -12,7 +12,7 @@ class BaseManager {
          * @readonly
          * @private
          */
-        Object.defineProperty(this, 'sql', { value: con });
+        Object.defineProperty(this, 'sql', { value: con.connection });
 
     }
 

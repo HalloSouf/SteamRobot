@@ -2,7 +2,7 @@ const { EventBase } = require('../structures/EventBase');
 
 /**
  * Message event
- * @extends {EventBase}
+ * @extends EventBase
  */
 class Message extends EventBase {
 
@@ -20,10 +20,13 @@ class Message extends EventBase {
         if (message.author.bot || message.system)
             return;
 
+        let settings = await this.settings.all({ guild: message.guild.id });
+        let prefix = settings.find((row) => row.setting === 'prefix');
+
         if (!message.member && message.guild)
             message.member = await message.guild.members.fetch(message.author);
 
-        if (!message.content.startsWith('!'))
+        if (!message.content.startsWith(prefix.value))
             return;
 
         const [cmd, ...args] = message.content.slice('-'.length).trim().split(/ +/g);
